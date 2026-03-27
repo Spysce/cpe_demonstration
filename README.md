@@ -100,5 +100,4 @@ This project is open-source and available for learning and personal use.
 
 ## Live Demo
 
-(Add your deployment link here once available)
-
+link: [https://spysce.github.io/cpe_demonstration/]
