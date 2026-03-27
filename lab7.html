@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling & Timers</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .box {
+            width: 200px; padding: 20px; border: 2px solid #333;
+            text-align: center; margin-bottom: 20px; transition: background 0.3s;
+        }
+        .error { color: red; font-size: 0.8rem; display: block; }
+        .success { color: green; }
+        section { margin-bottom: 40px; border-bottom: 1px solid #ddd; padding-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <section>
+        <h3>1. Hover Effect</h3>
+        <div id="hover-box" class="box">Hover over me!</div>
+    </section>
+
+    <section>
+        <h3>2. Click Counter</h3>
+        <p>Count: <span id="count-display">0</span></p>
+        <button id="counter-btn">Increment</button>
+    </section>
+
+    <section>
+        <h3>3. Email Validation</h3>
+        <form id="my-form">
+            <input type="text" id="email-input" placeholder="Enter email">
+            <button type="submit">Submit</button>
+            <span id="form-feedback" class="error"></span>
+        </form>
+        <br>
+        <a href="https://google.com" id="blocked-link">Clicking this won't take you to Google</a>
+    </section>
+
+    <section>
+        <h3>4. Delayed Message</h3>
+        <p id="timer-msg">Wait for it...</p>
+    </section>
+
+    <script>
+        // 1. Mouseover Event
+        const hoverBox = document.getElementById("hover-box");
+        hoverBox.addEventListener("mouseover", () => {
+            hoverBox.style.backgroundColor = "#ffeb3b";
+            hoverBox.innerText = "Nice!";
+        });
+        hoverBox.addEventListener("mouseout", () => {
+            hoverBox.style.backgroundColor = "transparent";
+            hoverBox.innerText = "Hover over me!";
+        });
+
+        // 2. Simple Counter
+        let count = 0;
+        const display = document.getElementById("count-display");
+        document.getElementById("counter-btn").addEventListener("click", () => {
+            count++;
+            display.innerText = count;
+        });
+
+        // 3 & 5. Form Validation & Prevent Default
+        const form = document.getElementById("my-form");
+        const emailInput = document.getElementById("email-input");
+        const feedback = document.getElementById("form-feedback");
+
+        form.addEventListener("submit", (event) => {
+            // Stop the form from refreshing the page
+            event.preventDefault();
+
+            if (emailInput.value.includes("@")) {
+                feedback.innerText = "Valid email! Form submitted (simulated).";
+                feedback.className = "success";
+            } else {
+                feedback.innerText = "Error: Email must contain '@'.";
+                feedback.className = "error";
+            }
+        });
+
+        // Prevent Default on Link
+        document.getElementById("blocked-link").addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Default behavior prevented! You are staying here.");
+        });
+
+        // 4. Timers (setTimeout)
+        setTimeout(() => {
+            document.getElementById("timer-msg").innerText = "🚀 5 seconds have passed! The text changed.";
+            document.getElementById("timer-msg").style.fontWeight = "bold";
+        }, 5000);
+    </script>
+</body>
+</html>

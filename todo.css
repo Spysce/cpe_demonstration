@@ -1,0 +1,63 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.todo-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 { text-align: center; color: #333; }
+
+.input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+ul { list-style-type: none; padding: 0; }
+
+li {
+    margin: 10px 0;
+    padding: 10px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 2. Strikethrough for completed tasks */
+.completed .task-text {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.task-text { cursor: pointer; flex: 1; }
+
+.delete-btn {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 4. Responsive Media Query */
+@media (max-width: 480px) {
+    .todo-container { padding: 1rem; width: 95%; }
+    .input-group { flex-direction: column; }
+    button { width: 100%; }
+}

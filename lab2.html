@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced HTML Student Portal</title>
+</head>
+<body>
+
+    <header>
+        <h1>Student Profile Portal</h1>
+        <nav>
+            <a href="#profile">Profile</a> | 
+            <a href="#registration">Registration</a>
+        </nav>
+    </header>
+
+    <main>
+        <article id="profile">
+            <section>
+                <h2>Active Student Bio</h2>
+                <img src="profile-pic.jpg" alt="Local Student Profile Picture" width="150">
+                
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Major</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>21</td>
+                            <td>Computer Science</td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>20</td>
+                            <td>Mechanical Engineering</td>
+                        </tr>
+                        <tr>
+                            <td>Alex Rivera</td>
+                            <td>22</td>
+                            <td>Digital Arts</td>
+                        </tr>
+                        <tr>
+                            <td>Sam Wilson</td>
+                            <td>19</td>
+                            <td>Cybersecurity</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </article>
+
+        <hr>
+
+        <article id="registration">
+            <h2>Update Information</h2>
+            <form action="#" method="post">
+                <p>
+                    <label for="name">Full Name:</label><br>
+                    <input type="text" id="name" name="name" required>
+                </p>
+
+                <p>
+                    <label>Gender:</label><br>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Other</label>
+                </p>
+
+                <p>
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter">Subscribe to newsletter</label>
+                </p>
+
+                <p>
+                    <label for="comments">Comments:</label><br>
+                    <textarea id="comments" name="comments" rows="4" cols="30" placeholder="Tell us more..."></textarea>
+                </p>
+
+                <input type="submit" value="Submit Registration">
+            </form>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Student Database Project</p>
+    </footer>
+
+</body>
+</html>

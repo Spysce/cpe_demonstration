@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated Student Portal</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; background-color: #f4f4f4; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .hidden { display: none; }
+        .highlight-text { color: crimson; font-weight: bold; font-size: 1.2rem; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #eee; }
+        section { margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        button { cursor: pointer; padding: 8px 15px; background: #333; color: white; border: none; border-radius: 4px; }
+        button:hover { background: #555; }
+        #output-box { margin-top: 10px; padding: 10px; border: 1px dashed #777; background: #fafafa; font-style: italic; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1 id="title">Student Profile System</h1>
+        <button onclick="changeTitle()">Update Header</button>
+    </header>
+
+    <main>
+        <section>
+            <h2>Active Records</h2>
+            <p id="color-p">Current student registry. Click to highlight important info.</p>
+            <button onclick="updateStyle()">Highlight Alert</button>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Major</th>
+                    </tr>
+                </thead>
+                <tbody id="student-table-body">
+                    <tr>
+                        <td>John Doe</td>
+                        <td>21</td>
+                        <td>Computer Science</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button onclick="addItem()">Add Random Row</button>
+        </section>
+
+        <section>
+            <div class="toggle-box">
+                <p><strong>Notice:</strong> This profile information is for internal use only.</p>
+            </div>
+            <button onclick="toggleBox()">Toggle Notice</button>
+        </section>
+
+        <section>
+            <h3>Update Profile Name</h3>
+            <input type="text" id="user-input" placeholder="Enter name...">
+            <button onclick="displayInput()">Submit</button>
+            <div id="output-box">No input detected...</div>
+        </section>
+    </main>
+</div>
+
+<script>
+    // 1. Change Title Logic
+    function changeTitle() {
+        const title = document.getElementById("title");
+        title.innerHTML = "Management Dashboard Active";
+        title.style.color = "darkblue";
+    }
+
+    // 2. Style Manipulation
+    function updateStyle() {
+        const p = document.getElementById("color-p");
+        p.classList.toggle("highlight-text");
+    }
+
+    // 3. Dynamic Table Rows (Appending to DOM)
+    function addItem() {
+        const tbody = document.getElementById("student-table-body");
+        const tr = document.createElement("tr");
+
+        // Using Template Literals to create the row structure
+        tr.innerHTML = `
+            <td>New Student</td>
+            <td>${Math.floor(Math.random() * 5) + 18}</td>
+            <td>Engineering</td>
+        `;
+        tbody.appendChild(tr);
+    }
+
+    // 4. QuerySelector & Class Toggling
+    function toggleBox() {
+        const box = document.querySelector(".toggle-box");
+        box.classList.toggle("hidden");
+    }
+
+    // 5. Form Input Fetching
+    function displayInput() {
+        const inputVal = document.getElementById("user-input").value;
+        const output = document.getElementById("output-box");
+
+        if (inputVal.trim() === "") {
+            output.innerText = "Please enter a valid name.";
+        } else {
+            output.innerText = "Current Name: " + inputVal;
+        }
+    }
+
+    // 6. Error Handling: Selecting a non-existent element
+    try {
+        const ghost = document.querySelector("#missing-element");
+        if (!ghost) throw new Error("Element check failed: Target not found.");
+    } catch (err) {
+        console.warn("DOM Init Check:", err.message);
+    }
+</script>
+
+</body>
+</html>
